@@ -1,22 +1,30 @@
-# Agent Explainability & Transparency Report
+# EXPLAINABILITY — Agent Skills
 
-- **Agent Name:** agent-skills
-- **OpenGAP Specification:** 0.1.0
-- **Agent ID:** agent-skills
-- **Domain:** Developer Tools / Autonomous Engineering Quality Gates & Agent Skills Runtime
-- **Passport Validation Tier:** Tier-1 Certified Autonomous Agent
+> **Admissibility & Transparency Report for OpenGAP / Agent Passport**  
+> *Agent Name:* Agent Skills (`agent-skills`)  
+> *Specification:* OpenGAP v0.1.0  
+> *Domain:* Developer Tools / Autonomous Engineering Quality Gates & Agent Skills Runtime  
 
 ---
 
-## 1. Overview & Architectural Purpose
+## 1. Overview & Operational Purpose
 
 The **Agent Skills** system (`agent-skills`) is an autonomous software engineering quality-gate and methodology framework designed for AI coding agents. Created to package battle-tested engineering practices into modular, machine-executable skills, the agent guides projects across the entire software development lifecycle: from requirement specification (`/spec`), atomic planning (`/plan`), and test-driven implementation (`/build`), to multi-axis code reviews (`/review`), constraint verification (`CONSTRAINTS.md`), and web performance optimization (`/webperf`).
 
-The agent enforces deterministic quality gates, preventing autonomous models from lowering code health, skipping tests, or introducing architectural regressions.
+The agent's primary operational purpose is to enforce deterministic quality gates, preventing autonomous models from lowering code health, skipping tests, or introducing architectural regressions during rapid software development cycles.
 
 ---
 
 ## 2. How the Agent Decides (Decision-Making Logic)
+
+Agent Skills operates across a deterministic, multi-stage engineering decision pipeline that grounds every implementation step in verifiable quality contracts:
+
+```
+[User Slash Command / Prompt] ──> [Specification & Readiness Gate] ──> [Atomic Task Planner]
+                                                                                     │
+                                                                                     ▼
+[Five-Axis Review & Merge Gate] <── [Test-Driven Refactor Proof] <── [Slice Implementation Loop]
+```
 
 ### 2.1 Specification & Requirement Discovery
 - **Decision:** Determines whether a user request has sufficient clarity to proceed to planning or requires requirement interrogation.
@@ -51,15 +59,23 @@ The agent enforces deterministic quality gates, preventing autonomous models fro
 ## 3. Data Sources & Inputs Used
 
 | Data Input | Source | Purpose | Data Handling & Privacy |
-| :--- | :--- | :--- | :--- |
-| Interactive User Prompts & Slash Commands | Terminal CLI / IDE Chat input | Captures developer feature intents and commands | Kept in local session context |
-| Repository Source Code & Diff Trees | Local git workspace on host disk | Analyzes code structure, types, and modified lines | Analyzed in-place, zero external storage |
-| Project Constraints & Configuration | `CONSTRAINTS.md`, `package.json`, linter configs | Reads quality thresholds and stack dependencies | Evaluated deterministically against local diffs |
-| Test Execution & Linter Results | Local runtime test runners (vitest, jest, eslint) | Proves implementation correctness and style health | Captured via process stdout/stderr |
+|---|---|---|---|
+| **Interactive User Prompts & Slash Commands** | Terminal CLI / IDE Chat input | Captures developer feature intents and commands | Kept in local session context |
+| **Repository Source Code & Diff Trees** | Local git workspace on host disk | Analyzes code structure, types, and modified lines | Analyzed in-place, zero external storage |
+| **Project Constraints & Configuration** | `CONSTRAINTS.md`, `package.json`, linter configs | Reads quality thresholds and stack dependencies | Evaluated deterministically against local diffs |
+| **Test Execution & Linter Results** | Local runtime test runners (vitest, jest, eslint) | Proves implementation correctness and style health | Captured via process stdout/stderr |
+
+Agent Skills complies with operational security and privacy standards:
+- **No Cloud Data Exfiltration:** Source code, test scripts, and diff artifacts remain strictly on the host workstation.
+- **Zero Suppression Policy:** Automated diff inspection blocks suppression flags (`--no-verify`, `skip-tests`, `@ts-nocheck`) from reaching production branches.
+- **Atomic Rollback Capability:** Implementations are committed task-by-task; failed slices can be reverted independently without loss of previous progress.
+- **Human Governance Primacy:** The developer holds full authority over PRD approvals, constraint thresholds, and merge permissions.
 
 ---
 
 ## 4. Known Limitations & Failure Modes
+
+Reviewers, auditors, and users should note the following operational constraints:
 
 1. **Underspecified User Prompts:**
    - *Limitation:* Vague requirements can lead to speculative architecture choices.
@@ -81,7 +97,7 @@ The agent enforces deterministic quality gates, preventing autonomous models fro
 
 ## 5. Verification, Safety & Human Oversight
 
-- **Human Approval on Specification & Plan:** Agents require explicit user sign-off on generated PRDs and task breakdown plans before writing code.
-- **Deterministic Quality Gate Auditing:** Review rules and constraint checks run deterministically against git diffs, ensuring objective enforcement.
-- **Atomic Rollback Capability:** Because implementations are committed task-by-task, any failed slice can be reverted independently without loss of previous progress.
-- **Zero Suppression Policy:** Automated diff inspection blocks suppression flags (`--no-verify`, `skip-tests`, `@ts-nocheck`) from reaching production branches.
+- **Real-Time Human Approval Gate:** Agents require explicit user sign-off on generated PRDs and task breakdown plans before writing code.
+- **Emergency Session Interrupt:** Developers can interrupt any autonomous implementation or test loop immediately via standard process signals.
+- **Step Quota Guardrails:** Autonomous task runs (`/build auto`) are bounded by explicit task limits ($N \le 10$ steps) to prevent runaway execution.
+- **Structured Audit Logging:** Every executed review finding, test result, and constraint violation is preserved in structured audit logs.
