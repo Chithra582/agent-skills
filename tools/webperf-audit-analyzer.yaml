@@ -1,0 +1,15 @@
+name: "webperf-audit-analyzer"
+description: "Measures and analyzes web performance, Core Web Vitals, and runtime budgets."
+input_schema:
+  type: "object"
+  properties:
+    target_url:
+      type: "string"
+      description: "URL or local development server address to audit."
+    metrics:
+      type: "array"
+      items:
+        type: "string"
+      description: "Performance metrics to collect (LCP, INP, CLS, bundle_size)."
+  required:
+    - "target_url"

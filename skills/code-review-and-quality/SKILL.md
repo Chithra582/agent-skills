@@ -355,15 +355,15 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 
 | Rationalization | Reality |
 |---|---|
-| "It works, that's good enough" | Working code that's unreadable, insecure, or architecturally wrong creates debt that compounds. |
-| "I wrote it, so I know it's correct" | Authors are blind to their own assumptions. Every change benefits from another set of eyes. |
-| "We'll clean it up later" | Later never comes. The review is the quality gate — use it. Require cleanup before merge, not after. |
-| "AI-generated code is probably fine" | AI code needs more scrutiny, not less. It's confident and plausible, even when wrong. |
-| "The tests pass, so it's good" | Tests are necessary but not sufficient. They don't catch architecture problems, security issues, or readability concerns. |
-| "The refactor makes it cleaner" | Relocating complexity isn't reducing it. If the reader still holds the same number of concepts, the structure didn't improve — look for the version where branches disappear. |
-| "It's only a small addition to this file" | Small diffs still push files past a healthy size and bolt branches onto unrelated flows. Judge the resulting structure, not the diff size. |
-| "It's just a version bump" | A bump is a behavior change you didn't write. Read the changelog; semver doesn't guarantee no breakage. |
-| "I'll upgrade everything in one PR to save time" | A bulk bump that breaks the build hides which package did it. One dependency per change keeps the cause and the revert clean. |
+| "It works, that's good enough" | Working code that is unreadable or insecure creates debt. |
+| "I wrote it, so I know it's correct" | Authors are blind to their own assumptions. |
+| "We'll clean it up later" | Later never comes. Require cleanup before merge. |
+| "AI-generated code is fine" | AI code needs more scrutiny, not less. |
+| "The tests pass, so it's good" | Tests don't catch architectural flaws or security vulnerabilities. |
+| "The refactor makes it cleaner" | Relocating complexity isn't reducing it. |
+| "It's only a small addition" | Small diffs still push files past healthy size limits. |
+| "It's just a version bump" | A bump is a behavior change. Always read the changelog. |
+| "Upgrade everything in one PR" | Bulk bumps make reverts difficult. One dependency per change. |
 
 ## Red Flags
 

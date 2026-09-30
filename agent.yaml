@@ -1,0 +1,64 @@
+spec_version: "0.1.0"
+name: "agent-skills"
+version: "1.0.0"
+description: >
+  Production-grade engineering skills and quality gates for AI coding agents.
+  Packages battle-tested senior engineering workflows across specification, atomic planning,
+  test-driven development, multi-axis code reviews, and performance auditing.
+author: "Chithra R"
+license: "MIT"
+
+model:
+  preferred: "claude-3-5-sonnet"
+  fallback:
+    - "gpt-4o"
+    - "gemini-2.0-flash"
+  constraints:
+    temperature: 0.1
+    max_tokens: 8192
+
+skills:
+  - spec-driven-development
+  - planning-and-task-breakdown
+  - test-driven-development
+  - code-review-and-quality
+
+tools:
+  - spec-prd-generator
+  - atomic-plan-orchestrator
+  - code-review-gatekeeper
+  - webperf-audit-analyzer
+
+runtime:
+  max_turns: 20
+  temperature: 0.1
+  timeout: 180
+
+compliance:
+  risk_tier: standard
+  frameworks:
+    - mitre-atlas
+    - owasp-llm
+  data_governance:
+    pii_handling: redact
+    data_classification: confidential
+  recordkeeping:
+    audit_logging: true
+    log_format: structured_json
+  supervision:
+    human_in_the_loop: conditional
+    override_capability: true
+    kill_switch: true
+
+tags:
+  - developer-tools
+  - agent-skills
+  - software-engineering
+  - code-review
+  - test-driven-development
+  - quality-gates
+  - web-performance
+
+metadata:
+  domain: "developer-tools"
+  category: "Developer Tools"

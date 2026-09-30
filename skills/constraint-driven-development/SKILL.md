@@ -265,12 +265,12 @@ Most projects should stop at 2. Move to 3 when you're maintaining more than abou
 
 | Excuse | Reality |
 |--------|---------|
-| "We'll add constraints once the code settles" | Code settles around whatever was allowed while it was moving |
-| "The tests are the constraints" | Tests you wrote prove you agree with yourself; they say nothing about coverage of new code, dependency risk, or bundle growth |
-| "We can't hit 80% coverage" | Then don't set 80%. Set today's number and hold it |
-| "This will slow the agent down" | Only if you put slow checks in the fast loop. That's a placement error, not an argument against constraints |
+| "We'll add constraints later" | Code settles around whatever was allowed while moving |
+| "The tests are the constraints" | Tests say nothing about coverage of new code, dependency risk, or bundle growth |
+| "We can't hit 80% coverage" | Set today's number and hold it |
+| "This will slow the agent down" | Put slow checks in CI, fast checks in the loop |
 | "I'll remember what our standards are" | The agent won't, and it's writing most of the code |
-| "Constraints will block us shipping" | An exception with an owner and a date unblocks you. Deleting the constraint unblocks everyone forever |
+| "Constraints will block us shipping" | An exception with an owner unblocks you |
 
 ## Red Flags
 

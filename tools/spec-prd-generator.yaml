@@ -1,0 +1,19 @@
+name: "spec-prd-generator"
+description: "Generates structured requirements, acceptance criteria, and PRD specifications from user intent."
+input_schema:
+  type: "object"
+  properties:
+    feature_title:
+      type: "string"
+      description: "Title of the proposed feature or capability."
+    problem_statement:
+      type: "string"
+      description: "Core problem or user need being addressed."
+    target_users:
+      type: "array"
+      items:
+        type: "string"
+      description: "Target user personas and beneficiaries."
+  required:
+    - "feature_title"
+    - "problem_statement"

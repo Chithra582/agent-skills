@@ -1,0 +1,13 @@
+name: "code-review-gatekeeper"
+description: "Enforces five-axis code quality, architecture, security, and performance reviews before merge."
+input_schema:
+  type: "object"
+  properties:
+    git_diff_ref:
+      type: "string"
+      description: "Git ref or branch to compare against main."
+    enforce_constraints:
+      type: "boolean"
+      description: "Whether to evaluate against CONSTRAINTS.md thresholds."
+  required:
+    - "git_diff_ref"

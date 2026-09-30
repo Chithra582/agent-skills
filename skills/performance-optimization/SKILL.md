@@ -214,37 +214,14 @@ const pool = new Pool({
   - Resolution switching (srcset + sizes): right file size per screen density
 -->
 <picture>
-  <!-- Mobile: portrait crop (8:10) -->
   <source
     media="(max-width: 767px)"
-    srcset="/hero-mobile-400.avif 400w, /hero-mobile-800.avif 800w"
-    sizes="100vw"
-    width="800"
-    height="1000"
+    srcset="/hero-mobile.avif"
     type="image/avif"
   />
   <source
-    media="(max-width: 767px)"
-    srcset="/hero-mobile-400.webp 400w, /hero-mobile-800.webp 800w"
-    sizes="100vw"
-    width="800"
-    height="1000"
-    type="image/webp"
-  />
-  <!-- Desktop: landscape crop (2:1) -->
-  <source
-    srcset="/hero-800.avif 800w, /hero-1200.avif 1200w, /hero-1600.avif 1600w"
-    sizes="(max-width: 1200px) 100vw, 1200px"
-    width="1200"
-    height="600"
+    srcset="/hero-desktop.avif"
     type="image/avif"
-  />
-  <source
-    srcset="/hero-800.webp 800w, /hero-1200.webp 1200w, /hero-1600.webp 1600w"
-    sizes="(max-width: 1200px) 100vw, 1200px"
-    width="1200"
-    height="600"
-    type="image/webp"
   />
   <img
     src="/hero-desktop.jpg"
@@ -254,6 +231,7 @@ const pool = new Pool({
     alt="Hero image description"
   />
 </picture>
+
 
 <!-- GOOD: Below-the-fold image — lazy loaded + async decoding -->
 <img
@@ -447,17 +425,16 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 
 | Rationalization | Reality |
 |---|---|
-| "We'll optimize later" | Performance debt compounds. Fix obvious anti-patterns now, defer micro-optimizations. |
-| "It's fast on my machine" | Your machine isn't the user's. Profile on representative hardware and networks. |
-| "This optimization is obvious" | If you didn't measure, you don't know. Profile first. |
-| "Users won't notice 100ms" | Research shows 100ms delays impact conversion rates. Users notice more than you think. |
-| "The framework handles performance" | Frameworks prevent some issues but can't fix N+1 queries or oversized bundles. |
-| "The query is slow, add an index" | Read the plan first. The index may already exist and be unusable, and every index taxes writes forever. |
-| "Just cache it" | Caching an already-cheap call buys nothing and adds a staleness bug. Cache what is expensive *and* re-read far more than written. |
-| "Raise the pool size, we're running out of connections" | A pool bigger than the database can serve moves the queue somewhere less visible. Find what holds connections. |
-| "It didn't help much, but it doesn't hurt" | Neutral changes are a revert. You pay maintenance on them forever and got nothing back. |
-| "We already wrote it, may as well keep it" | Sunk cost. The measurement doesn't care how long the change took to write. |
-| "The improvement is obvious, no need to re-measure" | Then re-measuring is cheap and proves it. Unmeasured wins are how neutral complexity lands. |
+| "We'll optimize later" | Performance debt compounds. Defer micro-optimizations, not architecture. |
+| "It's fast on my machine" | Profile on representative hardware and networks. |
+| "Optimization is obvious" | Profile first; measure before and after. |
+| "Users won't notice 100ms" | 100ms delays impact conversion rates. |
+| "Framework handles it" | Frameworks cannot fix N+1 queries or oversized bundles. |
+| "Query slow, add index" | Read the plan first; every index taxes writes. |
+| "Just cache it" | Caching adds staleness bugs; only cache expensive computations. |
+| "Raise pool size" | Connection pools larger than database concurrency shift queuing. |
+| "Didn't help, doesn't hurt" | Neutral changes must be reverted; every line incurs maintenance. |
+| "Improvement is obvious" | Re-measuring proves gains and prevents regressions. |
 
 ## Red Flags
 

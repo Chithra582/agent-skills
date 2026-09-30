@@ -1,0 +1,13 @@
+name: "atomic-plan-orchestrator"
+description: "Deconstructs features into test-driven atomic implementation slices with verification criteria."
+input_schema:
+  type: "object"
+  properties:
+    spec_document_path:
+      type: "string"
+      description: "Path to approved specification or PRD document."
+    granularity_level:
+      type: "string"
+      description: "Task granularity sizing (atomic, milestone, component)."
+  required:
+    - "spec_document_path"
